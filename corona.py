@@ -74,6 +74,7 @@ class Ui_MainWindow(object):
             soup = BeautifulSoup(web_site,'html.parser')
             table_list = soup.find_all('table', attrs={'id':'main_table_countries_today'})
             table = table_list[0]
+            
         #Read head of row
             thead_list = table.find('thead')
             th_tr_list = thead_list.find_all('tr')
@@ -91,6 +92,7 @@ class Ui_MainWindow(object):
             for th_item in th_list_text:
                 file.write(th_item +' |')
             file.write('\n')
+            
         # Read each country
             tbody = table.find('tbody')
             tr_list = tbody.find_all('tr')
@@ -108,8 +110,8 @@ class Ui_MainWindow(object):
                     td_list_text += [
                         this_list_text
                     ]
+                    
         #  write in the file
-
                 for td_item in td_list_text:
                     file.write(td_item + ' |')
                 file.write('\n')
